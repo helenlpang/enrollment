@@ -369,11 +369,19 @@ summary {
 <pre class="r"><code>x &lt;- read_excel(&quot;class_enrollment_summary_by_term2.18.20.xlsx&quot;, skip=3) %&gt;%
   clean_names() %&gt;%
   group_by(course_department) %&gt;%
-  summarize(totals = sum(total)) %&gt;%
+  summarize(totals = sum(total), big = max(total)) %&gt;%
   arrange(desc(totals)) %&gt;%
   slice(1:5) 
-
-table &lt;- gt(data=x) %&gt;%
+x</code></pre>
+<pre><code>## # A tibble: 5 x 3
+##   course_department totals   big
+##   &lt;chr&gt;              &lt;dbl&gt; &lt;dbl&gt;
+## 1 General Education   3699   259
+## 2 Economics           3289   527
+## 3 Computer Science    1852   277
+## 4 Mathematics         1753   289
+## 5 Government          1734   214</code></pre>
+<pre class="r"><code>table &lt;- gt(data=x) %&gt;%
   tab_header(title = &quot;Top Departments&quot;) %&gt;% 
   cols_label(course_department=&quot;Department&quot;, totals=&quot;Enrollment&quot;)
 
@@ -382,7 +390,7 @@ table </code></pre>
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#efdsyqwtnk .gt_table {
+#kdirjrqprd .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -410,7 +418,7 @@ table </code></pre>
   /* table.border.bottom.color */
 }
 
-#efdsyqwtnk .gt_heading {
+#kdirjrqprd .gt_heading {
   background-color: #FFFFFF;
   /* heading.background.color */
   border-bottom-color: #FFFFFF;
@@ -429,7 +437,7 @@ table </code></pre>
   /* heading.border.lr.color */
 }
 
-#efdsyqwtnk .gt_title {
+#kdirjrqprd .gt_title {
   color: #333333;
   font-size: 125%;
   /* heading.title.font.size */
@@ -443,7 +451,7 @@ table </code></pre>
   border-bottom-width: 0;
 }
 
-#efdsyqwtnk .gt_subtitle {
+#kdirjrqprd .gt_subtitle {
   color: #333333;
   font-size: 85%;
   /* heading.subtitle.font.size */
@@ -457,7 +465,7 @@ table </code></pre>
   border-top-width: 0;
 }
 
-#efdsyqwtnk .gt_bottom_border {
+#kdirjrqprd .gt_bottom_border {
   border-bottom-style: solid;
   /* heading.border.bottom.style */
   border-bottom-width: 2px;
@@ -466,7 +474,7 @@ table </code></pre>
   /* heading.border.bottom.color */
 }
 
-#efdsyqwtnk .gt_column_spanner {
+#kdirjrqprd .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -474,7 +482,7 @@ table </code></pre>
   padding-bottom: 4px;
 }
 
-#efdsyqwtnk .gt_col_headings {
+#kdirjrqprd .gt_col_headings {
   border-top-style: solid;
   /* column_labels.border.top.style */
   border-top-width: 2px;
@@ -501,7 +509,7 @@ table </code></pre>
   /* column_labels.border.lr.color */
 }
 
-#efdsyqwtnk .gt_col_heading {
+#kdirjrqprd .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   /* column_labels.background.color */
@@ -517,11 +525,11 @@ table </code></pre>
   overflow-x: hidden;
 }
 
-#efdsyqwtnk .gt_sep_right {
+#kdirjrqprd .gt_sep_right {
   border-right: 5px solid #FFFFFF;
 }
 
-#efdsyqwtnk .gt_group_heading {
+#kdirjrqprd .gt_group_heading {
   padding: 8px;
   /* row_group.padding */
   color: #333333;
@@ -560,7 +568,7 @@ table </code></pre>
   vertical-align: middle;
 }
 
-#efdsyqwtnk .gt_empty_group_heading {
+#kdirjrqprd .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -584,20 +592,20 @@ table </code></pre>
   vertical-align: middle;
 }
 
-#efdsyqwtnk .gt_striped {
+#kdirjrqprd .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
   /* row.striping.background_color */
 }
 
-#efdsyqwtnk .gt_from_md > :first-child {
+#kdirjrqprd .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#efdsyqwtnk .gt_from_md > :last-child {
+#kdirjrqprd .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#efdsyqwtnk .gt_row {
+#kdirjrqprd .gt_row {
   padding-top: 8px;
   /* data_row.padding */
   padding-bottom: 8px;
@@ -627,7 +635,7 @@ table </code></pre>
   overflow-x: hidden;
 }
 
-#efdsyqwtnk .gt_stub {
+#kdirjrqprd .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   /* stub.background.color */
@@ -644,7 +652,7 @@ table </code></pre>
   padding-left: 12px;
 }
 
-#efdsyqwtnk .gt_summary_row {
+#kdirjrqprd .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   /* summary_row.background.color */
@@ -658,7 +666,7 @@ table </code></pre>
   padding-right: 5px;
 }
 
-#efdsyqwtnk .gt_first_summary_row {
+#kdirjrqprd .gt_first_summary_row {
   padding-top: 8px;
   /* summary_row.padding */
   padding-bottom: 8px;
@@ -673,7 +681,7 @@ table </code></pre>
   /* summary_row.border.color */
 }
 
-#efdsyqwtnk .gt_grand_summary_row {
+#kdirjrqprd .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   /* grand_summary_row.background.color */
@@ -687,7 +695,7 @@ table </code></pre>
   padding-right: 5px;
 }
 
-#efdsyqwtnk .gt_first_grand_summary_row {
+#kdirjrqprd .gt_first_grand_summary_row {
   padding-top: 8px;
   /* grand_summary_row.padding */
   padding-bottom: 8px;
@@ -702,7 +710,7 @@ table </code></pre>
   /* grand_summary_row.border.color */
 }
 
-#efdsyqwtnk .gt_table_body {
+#kdirjrqprd .gt_table_body {
   border-top-style: solid;
   /* table_body.border.top.style */
   border-top-width: 2px;
@@ -717,7 +725,7 @@ table </code></pre>
   /* table_body.border.bottom.color */
 }
 
-#efdsyqwtnk .gt_footnotes {
+#kdirjrqprd .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   /* footnotes.background.color */
@@ -741,7 +749,7 @@ table </code></pre>
   /* footnotes.border.lr.color */
 }
 
-#efdsyqwtnk .gt_footnote {
+#kdirjrqprd .gt_footnote {
   margin: 0px;
   font-size: 90%;
   /* footnotes.font.size */
@@ -749,7 +757,7 @@ table </code></pre>
   /* footnotes.padding */
 }
 
-#efdsyqwtnk .gt_sourcenotes {
+#kdirjrqprd .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   /* source_notes.background.color */
@@ -773,82 +781,88 @@ table </code></pre>
   /* source_notes.border.lr.style */
 }
 
-#efdsyqwtnk .gt_sourcenote {
+#kdirjrqprd .gt_sourcenote {
   font-size: 90%;
   /* source_notes.font.size */
   padding: 4px;
   /* source_notes.padding */
 }
 
-#efdsyqwtnk .gt_left {
+#kdirjrqprd .gt_left {
   text-align: left;
 }
 
-#efdsyqwtnk .gt_center {
+#kdirjrqprd .gt_center {
   text-align: center;
 }
 
-#efdsyqwtnk .gt_right {
+#kdirjrqprd .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#efdsyqwtnk .gt_font_normal {
+#kdirjrqprd .gt_font_normal {
   font-weight: normal;
 }
 
-#efdsyqwtnk .gt_font_bold {
+#kdirjrqprd .gt_font_bold {
   font-weight: bold;
 }
 
-#efdsyqwtnk .gt_font_italic {
+#kdirjrqprd .gt_font_italic {
   font-style: italic;
 }
 
-#efdsyqwtnk .gt_super {
+#kdirjrqprd .gt_super {
   font-size: 65%;
 }
 
-#efdsyqwtnk .gt_footnote_marks {
+#kdirjrqprd .gt_footnote_marks {
   font-style: italic;
   font-size: 65%;
 }
 </style>
-<div id="efdsyqwtnk" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+<div id="kdirjrqprd" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
   <thead class="gt_header">
     <tr>
-      <th colspan="2" class="gt_heading gt_title gt_font_normal gt_center" style>Top Departments</th>
+      <th colspan="3" class="gt_heading gt_title gt_font_normal gt_center" style>Top Departments</th>
     </tr>
     <tr>
-      <th colspan="2" class="gt_heading gt_subtitle gt_font_normal gt_center gt_bottom_border" style></th>
+      <th colspan="3" class="gt_heading gt_subtitle gt_font_normal gt_center gt_bottom_border" style></th>
     </tr>
   </thead>
   <thead class="gt_col_headings">
     <tr>
       <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Department</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Enrollment</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">big</th>
     </tr>
   </thead>
   <tbody class="gt_table_body">
     <tr>
       <td class="gt_row gt_left">General Education</td>
       <td class="gt_row gt_right">3699</td>
+      <td class="gt_row gt_right">259</td>
     </tr>
     <tr>
       <td class="gt_row gt_left gt_striped">Economics</td>
       <td class="gt_row gt_right gt_striped">3289</td>
+      <td class="gt_row gt_right gt_striped">527</td>
     </tr>
     <tr>
       <td class="gt_row gt_left">Computer Science</td>
       <td class="gt_row gt_right">1852</td>
+      <td class="gt_row gt_right">277</td>
     </tr>
     <tr>
       <td class="gt_row gt_left gt_striped">Mathematics</td>
       <td class="gt_row gt_right gt_striped">1753</td>
+      <td class="gt_row gt_right gt_striped">289</td>
     </tr>
     <tr>
       <td class="gt_row gt_left">Government</td>
       <td class="gt_row gt_right">1734</td>
+      <td class="gt_row gt_right">214</td>
     </tr>
   </tbody>
   
